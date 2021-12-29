@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<HTML>
+
+<!--
+Rede Geodésica Nacional
+
+0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789
+-->
+
+
+<HEAD>	
+<TITLE>geodesical network</TITLE>
+<META charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">	
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+  <link rel="stylesheet" href="https://leaflet.github.io/Leaflet.markercluster/dist/MarkerCluster.css"/>
+  <link rel="stylesheet" href="https://leaflet.github.io/Leaflet.markercluster/dist/MarkerCluster.Default.css"/>
+  <script src="https://leaflet.github.io/Leaflet.markercluster/dist/leaflet.markercluster-src.js"></script>
+
+<SCRIPT TYPE="text/javascript" SRC="rgn.js"></SCRIPT>
+<STYLE>
+html, body { font-size:12px; height: 100%;  width: 100%; padding: 0; margin: 0;}
+input { padding: 0; margin: 0;}
+
+
+.button {
+	border: none;
+	color: white;
+	padding: 12px 24px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 6px 4px;
+	cursor: pointer;
+  }
+
+  .button {
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 6px 4px;
+  transition-duration: 0.6s;
+  cursor: pointer;
+}
+
+.button1 {
+  background-color: rgb(206, 113, 133);
+  color: rgb(255, 255, 255);
+  border: 2px solid #ffffff;
+}
+
+.button1:hover {
+  background-color: #ffffff;
+  color: rgb(206, 113, 133);
+  border: 2px solid rgb(206, 113, 133);
+}
+
+</STYLE>
+</HEAD>
+
+<BODY ONLOAD="onLoad()">
+
+<DIV STYLE="position: fixed; top: 0px; left: 0px; height: 100%; width: 250px; background: rgb(241, 204, 219)">
+<H1>Rede Geodésica Nacional</H1>
+
+<hr><b>Autore:</b> <br />
+
+&nbsp;&nbsp;&nbsp;&nbsp; Rafael Lopes <br />
+
+<hr>
+<b>Controlo:</b>
+<br />&nbsp;&nbsp;&nbsp;&nbsp;
+	<img src="resources/order1.png" alt="order1" />
+	<input type="checkbox" id="order1" autocomplete="off" checked onchange="checkboxUpdate()"/>
+	<img src="resources/order2.png" alt="order2" />	
+	<input type="checkbox" id="order2" autocomplete="off" checked onchange="checkboxUpdate()"/>
+	<img src="resources/order3.png" alt="order3" />	
+	<input type="checkbox" id="order3" autocomplete="off" checked onchange="checkboxUpdate()"/>
+	<img src="resources/order4.png" alt="order4" />	
+	<input type="checkbox" id="order4" autocomplete="off" checked onchange="checkboxUpdate()"/>
+<br />&nbsp;&nbsp;&nbsp;&nbsp;
+
+<br /><button class="button button1" ID="valid" ONCLICK="validationVGS()">VGs válidas?</button>
+<br /><button class="button button1" ID="circles" ONCLICK="putCircles()">Ver altitudes</button>
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;
+
+<hr><b><H2>Estatísticas:</H2></b>
+<br />
+<br />&nbsp;&nbsp;VGs vermelhos visíveis: <SPAN id="totalOrder1"></SPAN> <br />
+<br />&nbsp;&nbsp;VGs verdes visíveis: <SPAN id='totalOrder2'></SPAN> <br />
+<br />&nbsp;&nbsp;VGs azuis visíveis: <SPAN id='totalOrder3'></SPAN> <br />
+<br />&nbsp;&nbsp;VGs brancas visíveis: <SPAN id='totalOrder4'></SPAN> <br />
+<br />&nbsp;&nbsp;Total de VGs visíveis: <SPAN id='totalVis'></SPAN> <br />
+<br />&nbsp;&nbsp;Total de VGs: <SPAN id='totalNVis'></SPAN> <br />
+<br />&nbsp;&nbsp;Altitude Máxima: <SPAN id='maxAltitude'></SPAN> <br />
+<br />&nbsp;&nbsp;Altitude Mínima: <SPAN id='minAltitude'></SPAN> <br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;
+
+<hr>
+</DIV>
+<div id="mapid" style="position: fixed; top: 0px; left: 250px; width: 100%; height: 100%;"></div>
+</BODY>
+
+</HTML>
